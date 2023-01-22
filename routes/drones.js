@@ -2,8 +2,8 @@ const express = require('express');
 const Drone = require('../models/Drone.model');
 const router = express.Router();
 
-// require the Drone model here
-
+/* GET all drones page. */
+/* ROUTE drones*/
 router.get('/drones', async (req, res, next) => {
   try {
     const drones = await Drone.find({});
@@ -13,10 +13,14 @@ router.get('/drones', async (req, res, next) => {
   }
 });
 
+/* GET form drones */
+/* ROUTE drones/create*/
 router.get('/drones/create', (req, res, next) => {
   res.render('./drones/create-form')
 });
 
+/* POST  create page. */
+/* ROUTE drones/create*/
 router.post('/drones/create', async (req, res, next) => {
   const { name, propellers, maxSpeed,} = req.body;
   try {
@@ -27,6 +31,8 @@ router.post('/drones/create', async (req, res, next) => {
   }
 });
 
+/* GET  form edit drone */
+/* ROUTE drones/edit*/
 router.get('/drones/:id/edit', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -37,6 +43,8 @@ router.get('/drones/:id/edit', async (req, res, next) => {
   }
 });
 
+/* POST edit drones */
+/* ROUTE drones/edit*/
 router.post('/drones/:id/edit', async (req, res, next) => {
  const { name, propellers, maxSpeed } = req.body;
  const { id } = req.params;
@@ -48,6 +56,8 @@ router.post('/drones/:id/edit', async (req, res, next) => {
  }
 });
 
+/* GET delete */
+/* ROUTE drones/delete*/
 router.get('/drones/:id/delete', async (req, res, next) => {
   const { id } = req.params;
   try {
